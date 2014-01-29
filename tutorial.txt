@@ -1,0 +1,50 @@
+=====================================================================
+TUTORIÁL 
+popis nejčastějších úloh s třídou CRSMatrix
+=====================================================================
+ve všech příkladech předpokládáme	
+   #include "CRSMatrix.h" // include tridy s implementaci CRS
+   
+   CRSMatrix *matrix; // deklarace prom.
+   CRSMatrix *matrix2
+   matrix = new CRSMatrix(n) // vytvorime instanci tridy, n v argumentu=rozmer matice
+--------------------------------------------------------------------------------------
+vlozeni prvku
+============
+
+	matrix->setElement(0,2,83)->setElement(3,5,88);
+
+matice je indexovana od 0 do n-1!
+vlozi prvek 83 na pozici (0,2) a 88 na pozici(3,5)
+
+ziskani prvku
+============
+	
+	matrix->getElement(6,7);
+
+vrati hodnotu prvku na pozici (6,7)
+
+pricteni matice
+==============
+
+matrix2 = new CRSMatrix(n) // potrebujeme druhou matici
+matrix2->setElement(..)->...->setElement(..); //naplnime prvky
+
+matrix->matrixAddition(matrix2);
+
+vynasobeni matici zprava
+========================
+
+// vytvorime matrix2 jako v predch. prip.
+
+   matrix->matrixMatrixProduct(matrix2);
+
+vynasobeni vektorem
+===================
+
+	std::vector<int> vector;
+	std::vector<int> res;
+	//naplnime daty dle manualu std::vector...
+	// napr. vector.insert(vector.end(), 88); vlozi 88 na konec
+
+	res = matrix->matrixVectorProduct(vector);
